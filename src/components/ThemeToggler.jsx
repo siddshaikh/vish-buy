@@ -1,17 +1,36 @@
 "use client";
-import { IconButton, Tooltip } from "@mui/material";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { useThemeMode } from "@/context/ThemeContext";
+
+import { Button, IconButton, Tooltip } from "@mui/material";
+import { useThemeMode } from "@/providers/ThemeModeProvider";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 export default function ThemeToggle() {
-  const { mode, toggleColorMode } = useThemeMode();
+  const context = useThemeMode();
+
+  if (!context) return null;
+
+  const { mode, toggleColorMode } = context;
 
   return (
     <Tooltip title={`Switch to ${mode === "light" ? "dark" : "light"} mode`}>
-      <IconButton onClick={toggleColorMode} color="inherit">
-        {mode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
-      </IconButton>
+      <Button
+        onClick={toggleColorMode}
+        color="inherit"
+        size="medium"
+        sx={{
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          height: 25,
+          "&:hover": {
+            bgcolor: "action.hover",
+          },
+          transition: "all 0.3s ease-in-out",
+        }}
+      >
+        {mode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
+      </Button>
     </Tooltip>
   );
 }

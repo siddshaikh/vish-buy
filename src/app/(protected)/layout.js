@@ -3,11 +3,11 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import app from "@/firebase";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import app from "@/firebase/firebaseConfig";
 
 export default function ProtectedLayout({ children }) {
   const router = useRouter();
