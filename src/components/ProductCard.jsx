@@ -12,8 +12,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarIcon from "@mui/icons-material/Star";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
-
   return (
     <Card
       sx={{

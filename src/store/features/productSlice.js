@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async ({ limit = 10, skip = 0, category = "", search = "" }) => {
+  async ({ limit = 10, skip = 0, category = "", search = "", sortBy = "" }) => {
     let url = "https://dummyjson.com/products";
     if (search) {
       url += `/search?q=${search}&limit=${limit}&skip=${skip}`;
@@ -13,7 +13,17 @@ export const fetchProducts = createAsyncThunk(
     }
 
     const response = await fetch(url);
-    return await response.json();
+    const data = await response.json();
+
+    if (sortBy) {
+      data.products.sort((a, b) => {
+        if (sortBy === "price") return a.price - b.price;
+        if (sortBy === "rating") return b.rating - a.rating;
+        return 0;
+      });
+    }
+
+    return data;
   }
 );
 

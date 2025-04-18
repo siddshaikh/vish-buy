@@ -7,6 +7,7 @@ export const useProducts = ({
   limit = 10,
   category = "",
   search = "",
+  sortBy = "",
 }) => {
   const dispatch = useDispatch();
   const { items, loading, total, error } = useSelector(
@@ -15,8 +16,8 @@ export const useProducts = ({
   const skip = (page - 1) * limit;
 
   useEffect(() => {
-    dispatch(fetchProducts({ limit, skip, category, search }));
-  }, [page, limit, category, search, dispatch, skip]);
+    dispatch(fetchProducts({ limit, skip, category, search, sortBy }));
+  }, [page, limit, category, search, dispatch, skip, sortBy]);
 
   return { products: items, loading, total, error };
 };
