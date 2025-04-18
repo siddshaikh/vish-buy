@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeModeProvider from "@/providers/ThemeModeProvider";
+import ReduxProvider from "@/providers/ReduxProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +22,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeModeProvider>{children}</ThemeModeProvider>
+        <ThemeModeProvider>
+          <ReduxProvider>{children}</ReduxProvider>
+        </ThemeModeProvider>
       </body>
     </html>
   );

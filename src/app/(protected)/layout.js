@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import app from "@/firebase/firebaseConfig";
+import FilterBar from "@/components/FilterBar";
 
 export default function ProtectedLayout({ children }) {
   const router = useRouter();
@@ -44,7 +45,8 @@ export default function ProtectedLayout({ children }) {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <FilterBar />
+      <main style={{ padding: "0 1rem" }}>{children}</main>
     </>
   );
 }

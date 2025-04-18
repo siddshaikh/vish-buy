@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -33,8 +33,19 @@ const getDesignTokens = (mode) => ({
 export default function ThemeModeProvider({ children }) {
   const [mode, setMode] = useState("light");
 
+  useEffect(() => {
+    const savedMode = localStorage.getItem("themeMode");
+    if (savedMode === "light" || savedMode === "dark") {
+      setMode(savedMode);
+    }
+  }, []);
+
   const toggleColorMode = () => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    setMode((prevMode) => {
+      const newMode = prevMode === "light" ? "dark" : "light";
+      localStorage.setItem("themeMode", newMode);
+      return newMode;
+    });
   };
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
