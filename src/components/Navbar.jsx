@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
 import useAuth from "@/hooks/useAuth";
 import { usePathname } from "next/navigation";
+import FilterBar from "./FilterBar";
 
 const StyledNav = styled("nav")(({ theme }) => ({
   padding: "12px 16px",
@@ -28,40 +29,43 @@ const Navbar = () => {
   const { user, loading, isAuthenticated } = useAuth();
 
   return (
-    <StyledNav>
-      <Link href="/" style={{ textDecoration: "none" }}>
-        <Typography
-          variant="h1"
-          fontSize="1.5rem"
-          fontWeight="bold"
-          color="textPrimary"
+    <>
+      <StyledNav>
+        <Link href="/" style={{ textDecoration: "none" }}>
+          <Typography
+            variant="h1"
+            fontSize="1.5rem"
+            fontWeight="bold"
+            color="textPrimary"
+          >
+            VishBuy
+          </Typography>
+        </Link>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: "center",
+            justifyContent: isMobile ? "flex-start" : "center",
+            gap: isMobile ? 2 : 4,
+            width: isMobile ? "100%" : "auto",
+          }}
         >
-          VishBuy
-        </Typography>
-      </Link>
+          {!isLogin && (
+            <>
+              {" "}
+              <ProductSearch />
+              <Cart />
+            </>
+          )}
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: isMobile ? "column" : "row",
-          alignItems: "center",
-          justifyContent: isMobile ? "flex-start" : "center",
-          gap: isMobile ? 2 : 4,
-          width: isMobile ? "100%" : "auto",
-        }}
-      >
-        {!isLogin && (
-          <>
-            {" "}
-            <ProductSearch />
-            <Cart />
-          </>
-        )}
-
-        <ThemeToggle />
-        {!isLogin && <User isAuthenticate={isAuthenticated} />}
-      </Box>
-    </StyledNav>
+          <ThemeToggle />
+          {!isLogin && <User isAuthenticate={isAuthenticated} />}
+        </Box>
+      </StyledNav>
+      {!isLogin && <FilterBar />}
+    </>
   );
 };
 

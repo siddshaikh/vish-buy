@@ -7,7 +7,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import app from "@/firebase/firebaseConfig";
-import FilterBar from "@/components/FilterBar";
 
 export default function ProtectedLayout({ children }) {
   const router = useRouter();
@@ -42,12 +41,5 @@ export default function ProtectedLayout({ children }) {
     );
   }
 
-  return (
-    <>
-      <main style={{ padding: "0 1rem" }}>
-        <FilterBar />
-        {children}
-      </main>
-    </>
-  );
+  return <main style={{ padding: "0 1rem" }}>{children}</main>;
 }
