@@ -4,16 +4,22 @@ import {
   CardMedia,
   Typography,
   Box,
-  Button,
   Stack,
-  Rating,
 } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarIcon from "@mui/icons-material/Star";
+import { useRouter } from "next/navigation";
+import AddToCart from "./AddToCart";
 
 const ProductCard = ({ product }) => {
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    router.push(`/product-detail/${product.id}`);
+  };
+
   return (
     <Card
+      onClick={handleCardClick}
       sx={{
         width: 300,
         height: "100%",
@@ -23,6 +29,7 @@ const ProductCard = ({ product }) => {
         boxShadow: 3,
         borderRadius: 2,
         transition: "transform 0.2s",
+        cursor: "pointer",
         "&:hover": {
           transform: "translateY(-5px)",
         },
@@ -64,22 +71,7 @@ const ProductCard = ({ product }) => {
           ${product.price}
         </Typography>
 
-        <Button
-          variant="outlined"
-          startIcon={<ShoppingCartIcon />}
-          fullWidth
-          sx={{
-            textTransform: "none",
-            transition: "all 0.3s ease",
-            "&:hover": {
-              bgcolor: "primary.main",
-              color: "white",
-              borderColor: "primary.main",
-            },
-          }}
-        >
-          Add to Cart
-        </Button>
+        <AddToCart product={product} />
       </CardContent>
     </Card>
   );

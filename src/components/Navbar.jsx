@@ -7,8 +7,6 @@ import ProductSearch from "./ProductSearch";
 import Link from "next/link";
 
 const StyledNav = styled("nav")({
-  position: "sticky",
-  top: 0,
   padding: "15px 25px",
   display: "flex",
   alignItems: "center",
