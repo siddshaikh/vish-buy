@@ -60,7 +60,7 @@ const FILTERS = [
 
 const FilterBar = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedFilter, setSelectedFilter] = useState("price");
+  const [selectedFilter, setSelectedFilter] = useState("");
 
   const {
     products = [],
@@ -82,7 +82,7 @@ const FilterBar = () => {
       elevation={3}
       sx={{
         mt: 2,
-        px: 1,
+        px: 2,
         py: 1.5,
         borderRadius: 3,
         overflowX: "auto",
@@ -98,9 +98,13 @@ const FilterBar = () => {
         sx={{
           width: "max-content",
           minWidth: "100%",
-          transition: "all 0.3s ease-in-out",
+          alignItems: "center",
         }}
       >
+        {/* Sort By */}
+        <span style={{ fontWeight: 600, fontSize: "0.85rem", marginRight: 4 }}>
+          Sort by:
+        </span>
         {FILTERS.map((filter) => (
           <Chip
             key={filter.value}
@@ -110,10 +114,9 @@ const FilterBar = () => {
             color={selectedFilter === filter.value ? "primary" : "default"}
             onClick={() => setSelectedFilter(filter.value)}
             sx={{
-              px: isMobile ? 1 : 2,
-              fontSize: isMobile ? "0.75rem" : "0.85rem",
+              px: 2,
+              fontSize: "0.8rem",
               borderRadius: 2,
-              transition: "all 0.3s ease",
               "&:hover": {
                 transform: "scale(1.05)",
               },
@@ -121,6 +124,19 @@ const FilterBar = () => {
           />
         ))}
 
+        {/* Divider */}
+        <span
+          style={{
+            borderLeft: "1px solid #ccc",
+            height: "24px",
+            margin: "0 12px",
+          }}
+        />
+
+        {/* Categories */}
+        <span style={{ fontWeight: 600, fontSize: "0.85rem", marginRight: 4 }}>
+          Categories:
+        </span>
         {PRODUCT_CATEGORIES.map((category) => (
           <Chip
             key={category.value}
@@ -130,10 +146,9 @@ const FilterBar = () => {
             color={selectedCategory === category.value ? "primary" : "default"}
             onClick={() => setSelectedCategory(category.value)}
             sx={{
-              px: isMobile ? 1 : 2,
-              fontSize: isMobile ? "0.75rem" : "0.85rem",
+              px: 2,
+              fontSize: "0.8rem",
               borderRadius: 2,
-              transition: "all 0.3s ease",
               "&:hover": {
                 transform: "scale(1.05)",
               },

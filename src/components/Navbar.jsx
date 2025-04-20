@@ -1,33 +1,65 @@
-import { Box, styled, Typography } from "@mui/material";
+"use client";
+import { Box, styled, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import ThemeToggle from "./ThemeToggler";
 import User from "./User";
 import Cart from "./Cart";
 import ProductSearch from "./ProductSearch";
 import Link from "next/link";
+import { useTheme } from "@mui/material/styles";
+import useAuth from "@/hooks/useAuth";
+import { usePathname } from "next/navigation";
 
-const StyledNav = styled("nav")({
-  padding: "15px 25px",
+const StyledNav = styled("nav")(({ theme }) => ({
+  padding: "12px 16px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  borderBottom: "1px solid",
-});
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  flexWrap: "wrap",
+  rowGap: "12px",
+}));
 
 const Navbar = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const pathName = usePathname();
+  const isLogin = pathName === "/login";
+  const { user, loading, isAuthenticated } = useAuth();
+
   return (
     <StyledNav>
-      {/* logo */}
-      <Link href={"/dashboard"}>
-        <Typography variant="h1" fontSize={"1.5rem"}>
+      <Link href="/" style={{ textDecoration: "none" }}>
+        <Typography
+          variant="h1"
+          fontSize="1.5rem"
+          fontWeight="bold"
+          color="textPrimary"
+        >
           VishBuy
         </Typography>
       </Link>
-      <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
-        <ProductSearch />
-        <Cart />
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          alignItems: "center",
+          justifyContent: isMobile ? "flex-start" : "center",
+          gap: isMobile ? 2 : 4,
+          width: isMobile ? "100%" : "auto",
+        }}
+      >
+        {!isLogin && (
+          <>
+            {" "}
+            <ProductSearch />
+            <Cart />
+          </>
+        )}
+
         <ThemeToggle />
-        <User />
+        {!isLogin && <User isAuthenticate={isAuthenticated} />}
       </Box>
     </StyledNav>
   );

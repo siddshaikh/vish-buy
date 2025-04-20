@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "@/firebase/firebaseConfig";
-import { Avatar, Box, IconButton, Menu, MenuItem } from "@mui/material";
+import { Avatar, Button, IconButton, Menu, MenuItem } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-const User = () => {
+const User = ({ isAuthenticate }) => {
   const [userName, setUserName] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const router = useRouter();
@@ -48,11 +48,21 @@ const User = () => {
 
   return (
     <>
-      <IconButton onClick={handleAvatarClick} sx={{ p: 0 }}>
-        <Avatar sx={{ bgcolor: "primary.main", width: 36, height: 36 }}>
-          {firstLetter}
-        </Avatar>
-      </IconButton>
+      {isAuthenticate ? (
+        <IconButton onClick={handleAvatarClick} sx={{ p: 0 }}>
+          <Avatar sx={{ bgcolor: "primary.main", width: 36, height: 36 }}>
+            {firstLetter}
+          </Avatar>
+        </IconButton>
+      ) : (
+        <Button
+          size="small"
+          variant="outlined"
+          onClick={() => router.push("/login")}
+        >
+          Login
+        </Button>
+      )}
 
       {userName && (
         <Menu

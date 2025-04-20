@@ -40,7 +40,7 @@ export default function AuthForm({ type }) {
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
       }
-      router.push("/dashboard");
+      router.push("/");
     } catch (err) {
       alert(err.message);
     }
@@ -49,7 +49,7 @@ export default function AuthForm({ type }) {
   const handleGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      router.push("/dashboard");
+      router.push("/");
     } catch (err) {
       alert(err.message);
     }

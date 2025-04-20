@@ -8,7 +8,7 @@ const SuccessPage = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/dashboard");
+      router.push("/");
     }, 3000);
 
     return () => clearTimeout(timer);

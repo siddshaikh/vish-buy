@@ -33,7 +33,7 @@ const BuyNowPage = () => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   const handleApplyDiscount = () => {
-    if (discountCode === "DISCOUNT10") {
+    if (discountCode === "NEW10") {
       setDiscountValue(0.1);
     } else {
       setDiscountValue(0);
