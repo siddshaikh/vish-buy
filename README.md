@@ -38,4 +38,15 @@ Firebase Auth (Email & Google)
 
 Stripe for payment gateway
 
+## 🔐 Test Credentials
+
+Use the following credentials to test the authentication features:
+
+### 📧 Email Login
+
+- **Email:** sidd@test.com
+- **Password:** Sidd@123
+
+Or, sign in with **Google** using the "Continue with Google" option.
+
 ![alt text](image.png)
