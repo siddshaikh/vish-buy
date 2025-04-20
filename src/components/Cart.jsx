@@ -8,15 +8,12 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
-  const cartItemCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+
   return (
     <Link href="/buy-now">
       <Tooltip title="Check your'e cart">
         <Badge
-          badgeContent={cartItemCount}
+          badgeContent={cartItems.length}
           color="secondary"
           overlap="rectangular"
           sx={{

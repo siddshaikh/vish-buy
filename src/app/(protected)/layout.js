@@ -11,6 +11,7 @@ import app from "@/firebase/firebaseConfig";
 import FilterBar from "@/components/FilterBar";
 import { Breadcrumbs, Link } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
+import DiscountBanner from "@/components/DiscountCard";
 
 export default function ProtectedLayout({ children }) {
   const router = useRouter();
@@ -48,6 +49,7 @@ export default function ProtectedLayout({ children }) {
 
   return (
     <>
+      <DiscountBanner />
       <Navbar />
       {pathName !== "/dashboard" ? (
         <Breadcrumbs aria-label="breadcrumb" sx={{ ml: 2 }}>
