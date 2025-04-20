@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🛒 E-commerce Store (Next.js + DummyJSON)
 
-## Getting Started
+A fully functional e-commerce web application built with Next.js App Router, Redux Toolkit, and the DummyJSON API. This project demonstrates product listing, category filtering, search, cart system, Firebase authentication, and Stripe payments.
 
-First, run the development server:
+🚀 Features
+🔍 Product listing with pagination
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+📂 Filter by categories
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🔎 Search products by name
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🛒 Add to cart, update quantity, remove items
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔐 Firebase Authentication (Email & Google Sign-In)
 
-## Learn More
+💸 Secure Stripe payments
 
-To learn more about Next.js, take a look at the following resources:
+📦 Checkout stepper with address input
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+♻️ State management with Redux Toolkit
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⚡ Lightning-fast performance with Next.js App Router
 
-## Deploy on Vercel
+✅ Responsive UI with Material-UI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📦 Tech Stack
+Next.js 14 (App Router)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+React 18
+
+Redux Toolkit for state management
+
+Material UI (MUI) for UI components
+
+DummyJSON API for product data
+
+Firebase Auth (Email & Google)
+
+Stripe for payment gateway
+
+![alt text](image.png)
