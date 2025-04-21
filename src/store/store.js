@@ -12,7 +12,7 @@ const loadCartState = () => {
   }
 };
 
-const preloadedCartState = loadCartState();
+const preloadedMyCart = loadCartState();
 
 export const store = configureStore({
   reducer: {
@@ -20,7 +20,7 @@ export const store = configureStore({
     cart: cartReducer,
   },
   preloadedState: {
-    cart: preloadedCartState,
+    cart: preloadedMyCart,
   },
 });
 

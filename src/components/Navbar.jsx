@@ -1,9 +1,9 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Box, styled, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import ThemeToggle from "./ThemeToggler";
 import User from "./User";
-import Cart from "./Cart";
 import ProductSearch from "./ProductSearch";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
@@ -11,6 +11,7 @@ import useAuth from "@/hooks/useAuth";
 import { usePathname } from "next/navigation";
 import FilterBar from "./FilterBar";
 
+const Cart = dynamic(() => import("./Cart"), { ssr: false });
 const StyledNav = styled("nav")(({ theme }) => ({
   padding: "12px 16px",
   display: "flex",
